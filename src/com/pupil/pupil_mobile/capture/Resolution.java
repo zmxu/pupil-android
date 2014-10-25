@@ -1,4 +1,4 @@
-package capture;
+package com.pupil.pupil_mobile.capture;
 
 public class Resolution {
 	private int width = 0;

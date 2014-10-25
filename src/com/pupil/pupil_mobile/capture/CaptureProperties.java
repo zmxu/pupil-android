@@ -1,4 +1,4 @@
-package capture;
+package com.pupil.pupil_mobile.capture;
 
 public class CaptureProperties {
 	private int fps = 30;

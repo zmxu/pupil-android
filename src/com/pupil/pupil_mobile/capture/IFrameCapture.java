@@ -1,4 +1,4 @@
-package capture;
+package com.pupil.pupil_mobile.capture;
 
 import java.util.Vector;
 

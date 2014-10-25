@@ -1,4 +1,4 @@
-package capture;
+package com.pupil.pupil_mobile.capture;
 
 import android.content.Context;
 import android.util.AttributeSet;

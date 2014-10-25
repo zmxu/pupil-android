@@ -1,6 +1,6 @@
-package plugin;
+package com.pupil.pupil_mobile.plugin;
 
-import capture.Frame;
+import com.pupil.pupil_mobile.capture.Frame;
 
 public class Recorder implements IPupilPlugin {
 
