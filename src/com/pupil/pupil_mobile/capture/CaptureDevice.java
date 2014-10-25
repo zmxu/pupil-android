@@ -7,14 +7,30 @@ public class CaptureDevice implements IFrameCapture, Runnable, Closeable {
 	
 	private final int id;
 	private CaptureProperties properties;
-
+	private boolean[] cameraExists=new boolean[2];
 	private Thread captureThread;
-	
+	// prepareCamera selects the device automatically. please set videoid=0
+    public native int prepareCamera(int videoid);
 	public CaptureDevice(int id, CaptureProperties properties){
 		this.id = id;
 		this.properties = properties;
 		
 		// TODO: init camera here
+		int ret = prepareCamera(0);
+		// ret: -3(/dev/video[01] do not exist)
+		//      -2(/dev/video1 does not exist)
+		//      -1(/dev/video0 does not exist)
+		ret = -ret;
+		//if((ret & 0x2)>>1==1){
+			//cameraExists[1] = false;
+		//}else{
+			//cameraExists[1] = true;
+		//}
+		if((ret & 0x01)==1){
+			cameraExists[0] = false;
+		}else{
+			cameraExists[0] = true;
+		}
 		
 		captureThread = new Thread(this);
 		captureThread.start();
