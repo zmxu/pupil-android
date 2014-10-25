@@ -3,6 +3,8 @@ package com.pupil.pupil_mobile.capture;
 import java.io.Closeable;
 import java.io.IOException;
 
+import android.util.Log;
+
 public class CaptureDevice implements IFrameCapture, Runnable, Closeable {
 	
 	private final int id;
@@ -11,6 +13,9 @@ public class CaptureDevice implements IFrameCapture, Runnable, Closeable {
 	private Thread captureThread;
 	// prepareCamera selects the device automatically. please set videoid=0
     public native int prepareCamera(int videoid);
+    static {
+        System.loadLibrary("ImageProc");
+    }
 	public CaptureDevice(int id, CaptureProperties properties){
 		this.id = id;
 		this.properties = properties;
@@ -21,6 +26,7 @@ public class CaptureDevice implements IFrameCapture, Runnable, Closeable {
 		//      -2(/dev/video1 does not exist)
 		//      -1(/dev/video0 does not exist)
 		ret = -ret;
+		Log.e("Mayank","return is"+ret);
 		//if((ret & 0x2)>>1==1){
 			//cameraExists[1] = false;
 		//}else{
@@ -32,8 +38,8 @@ public class CaptureDevice implements IFrameCapture, Runnable, Closeable {
 			cameraExists[0] = true;
 		}
 		
-		captureThread = new Thread(this);
-		captureThread.start();
+		//captureThread = new Thread(this);
+		//captureThread.start();
 	}
 	
 	@Override

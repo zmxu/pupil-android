@@ -8,7 +8,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
-public class CameraPreview extends SurfaceView implements IFrameProcessor {
+public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback,IFrameProcessor {
 
 	private static final boolean DEBUG=true;
 	private static final String TAG="DoubleWebCam";
@@ -50,5 +50,18 @@ public class CameraPreview extends SurfaceView implements IFrameProcessor {
 				bmp[0] = Bitmap.createBitmap(IMG_WIDTH, IMG_HEIGHT, Bitmap.Config.ARGB_8888);
 			}
 		}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Auto-generated method stub
+		if(DEBUG) Log.d(TAG, "surfaceChanged");
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		if(DEBUG) Log.d(TAG, "surfaceDestroyed");
+	}
 
 }

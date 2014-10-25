@@ -4,6 +4,7 @@ import com.pupil.pupil_mobile.R;
 import com.pupil.pupil_mobile.R.id;
 import com.pupil.pupil_mobile.R.layout;
 import com.pupil.pupil_mobile.R.menu;
+import com.pupil.pupil_mobile.capture.CaptureDevice;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class TestActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_test);
+		CaptureDevice capturedevice = new CaptureDevice(0,null);
 	}
 
 	@Override
