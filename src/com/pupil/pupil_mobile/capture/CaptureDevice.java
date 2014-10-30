@@ -16,6 +16,7 @@ public class CaptureDevice implements IFrameCapture, Runnable, Closeable {
     static {
         System.loadLibrary("ImageProc");
     }
+    
 	public CaptureDevice(int id, CaptureProperties properties){
 		this.id = id;
 		this.properties = properties;
@@ -57,11 +58,11 @@ public class CaptureDevice implements IFrameCapture, Runnable, Closeable {
 
 	@Override
 	public synchronized void addFrameProcessor(IFrameProcessor processor) {
-		if (processor == null)
+		if (processor == null) 
 			throw new IllegalArgumentException("The processor you wanted to add was null!");
-		if (frameProcessors.contains(processor)){
+		if (frameProcessors.contains(processor))
 			return;
-		}
+		
 		frameProcessors.add(processor);
 	}
 
